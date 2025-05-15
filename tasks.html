@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Задачи по физике</title>
+  <style>
+    /* Сброс и базовые стили */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #001a4d; /* темно-синий фон */
+      color: #e0e7ff;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Боковая панель */
+    nav.sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background-color: #003366;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.7);
+      padding: 30px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    nav.sidebar a {
+      color: #cce0ff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 15px;
+      border-radius: 6px;
+      transition: background-color 0.3s, color 0.3s;
+      display: block;
+    }
+
+    nav.sidebar a:hover,
+    nav.sidebar a.active {
+      background-color: #0073e6;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: inset 0 -3px 0 #001f4d;
+    }
+
+    /* Заголовок */
+    header {
+      margin-left: 220px; /* сдвиг справа от панели */
+      background-color: #003366;
+      padding: 20px 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      position: fixed;
+      top: 0;
+      left: 220px;
+      right: 0;
+      z-index: 900;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #aaccff;
+    }
+
+    /* Основной контент */
+    main {
+      margin-left: 220px;
+      padding: 140px 40px 40px 40px; /* сверху отступ для header */
+      max-width: 900px;
+      background-color: #003366;
+      border-radius: 0 6px 6px 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+      color: #d0e4ff;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #cbd5ff;
+    }
+
+    .task {
+      background-color: #004080;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 102, 204, 0.5);
+    }
+
+    .task p {
+      margin: 8px 0;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+      color: #cce0ff;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      box-sizing: border-box;
+      background-color: #00264d;
+      color: #d0e4ff;
+      resize: vertical;
+      transition: border-color 0.3s, background-color 0.3s;
+    }
+
+    textarea {
+      height: 80px;
+    }
+
+    button {
+      margin-top: 12px;
+      background-color: #0059b3;
+      color: #e0e7ff;
+      border: none;
+      padding: 10px 18px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0073e6;
+    }
+
+    /* Правильный/неправильный ответ */
+    .correct {
+      border: 2px solid #00ff00 !important;
+      background-color: #003300 !important;
+      color: #aaffaa !important;
+    }
+
+    .incorrect {
+      border: 2px solid #ff4444 !important;
+      background-color: #330000 !important;
+      color: #ffaaaa !important;
+    }
+
+    /* Сообщение о результате */
+    .result-message {
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .result-message.correct {
+      color: #00ff00;
+    }
+
+    .result-message.incorrect {
+      color: #ff4444;
+    }
+
+    /* Блок с объяснением и ответом скрыт по умолчанию */
+    .explanation {
+      display: none;
+      margin-top: 10px;
+      background-color: rgba(255 255 255 / 0.1);
+      padding: 10px;
+      border-radius: 6px;
+      color: #cce0ff;
+      font-style: normal;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+      }
+
+      nav.sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding: 10px 0;
+        box-shadow: none;
+        overflow-x: auto;
+        gap: 10px;
+      }
+
+      nav.sidebar a {
+        flex: 1 0 auto;
+        text-align: center;
+        padding: 10px 5px;
+        font-size: 14px;
+      }
+
+      header {
+        margin-left: 0;
+        position: relative;
+        padding: 20px 15px;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 20px 15px 40px 15px;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar" aria-label="Основная навигация">
+    <a href="index.html">Главная</a>
+    <a href="laws.html">Законы</a>
+    <a href="equations.html">Уравнения</a>
+    <a href="formulas.html">Формулы</a>
+    <a href="tasks.html" class="active">Задачи</a>
+    <a href="registration.html">Регистрация</a>
+  </nav>
+
+  <header>
+    <h1>Практические задачи по физике с решениями</h1>
+  </header>
+
+  <main>
+    <h2>Задачи</h2>
+    <div id="tasksContainer"></div>
+  </main>
+
+  <script>
+    const tasks = [
+      {question: "Найдите кинетическую энергию тела массой 2 кг, движущегося со скоростью 3 м/с.", answer: "9", explanation: "Eк = 0.5 * 2 * 3² = 9 Дж"},
+      {question: "Тело массой 5 кг поднято на высоту 10 м. Найдите потенциальную энергию.", answer: "490", explanation: "Eп = 5 * 9.8 * 10 = 490 Дж"},
+      {question: "Определите работу, совершаемую силой 20 Н, если тело переместилось на 5 м.", answer: "100", explanation: "A = 20 * 5 = 100 Дж"},
+      {question: "Количество теплоты, выделяемое при сгорании топлива, равно 5000 Дж. Определите теплоту сгорания.", answer: "5000", explanation: "Q = 5000 Дж"},
+      {question: "Найдите мощность, если работа 200 Дж совершается за 4 секунды.", answer: "50", explanation: "P = 200 / 4 = 50 Вт"},
+      {question: "Тело массой 3 кг движется со скоростью 4 м/с. Найдите кинетическую энергию.", answer: "24", explanation: "Eк = 0.5 * 3 * 4² = 24 Дж"},
+      {question: "Определите потенциальную энергию тела массой 7 кг на высоте 15 м.", answer: "1029", explanation: "Eп = 7 * 9.8 * 15 = 1029 Дж"},
+      {question: "Найдите работу, если сила 10 Н перемещает тело на 8 м.", answer: "80", explanation: "A = 10 * 8 = 80 Дж"},
+      {question: "Определите количество теплоты, необходимое для нагревания 2 кг воды на 10 °C.", answer: "84000", explanation: "Q = 2 * 4200 * 10 = 84000 Дж"},
+      {question: "Найдите мощность, если работа 500 Дж совершается за 10 секунд.", answer: "50", explanation: "P = 500 / 10 = 50 Вт"},
+      {question: "Тело массой 4 кг движется со скоростью 5 м/с. Найдите кинетическую энергию.", answer: "50", explanation: "Eк = 0.5 * 4 * 5² = 50 Дж"},
+      {question: "Определите потенциальную энергию тела массой 6 кг на высоте 12 м.", answer: "705.6", explanation: "Eп = 6 * 9.8 * 12 = 705.6 Дж"},
+      {question: "Работа силы 15 Н, перемещающей тело на 7 м. Найдите работу.", answer: "105", explanation: "A = 15 * 7 = 105 Дж"},
+      {question: "Количество теплоты для нагревания 3 кг воды на 15 °C.", answer: "189000", explanation: "Q = 3 * 4200 * 15 = 189000 Дж"},
+      {question: "Мощность, если работа 300 Дж за 6 секунд.", answer: "50", explanation: "P = 300 / 6 = 50 Вт"},
+      {question: "Кинетическая энергия тела массой 1.5 кг со скоростью 10 м/с.", answer: "75", explanation: "Eк = 0.5 * 1.5 * 10² = 75 Дж"},
+      {question: "Потенциальная энергия тела массой 8 кг на высоте 9 м.", answer: "705.6", explanation: "Eп = 8 * 9.8 * 9 = 705.6 Дж"},
+      {question: "Работа силы 25 Н при перемещении тела на 4 м.", answer: "100", explanation: "A = 25 * 4 = 100 Дж"},
+      {question: "Количество теплоты для нагревания 5 кг воды на 20 °C.", answer: "420000", explanation: "Q = 5 * 4200 * 20 = 420000 Дж"},
+      {question: "Мощность, если работа 600 Дж за 12 секунд.", answer: "50", explanation: "P = 600 / 12 = 50 Вт"},
+      {question: "Кинетическая энергия тела массой 10 кг со скоростью 2 м/с.", answer: "20", explanation: "Eк = 0.5 * 10 * 2² = 20 Дж"},
+      {question: "Потенциальная энергия тела массой 3 кг на высоте 20 м.", answer: "588", explanation: "Eп = 3 * 9.8 * 20 = 588 Дж"},
+      {question: "Работа силы 40 Н при перемещении тела на 3 м.", answer: "120", explanation: "A = 40 * 3 = 120 Дж"},
+      {question: "Количество теплоты для нагревания 4 кг воды на 25 °C.", answer: "420000", explanation: "Q = 4 * 4200 * 25 = 420000 Дж"},
+      {question: "Мощность, если работа 800 Дж за 16 секунд.", answer: "50", explanation: "P = 800 / 16 = 50 Вт"},
+      {question: "Кинетическая энергия тела массой 7 кг со скоростью 3 м/с.", answer: "31.5", explanation: "Eк = 0.5 * 7 * 3² = 31.5 Дж"},
+      {question: "Потенциальная энергия тела массой 9 кг на высоте 11 м.", answer: "970.2", explanation: "Eп = 9 * 9.8 * 11 = 970.2 Дж"},
+      {question: "Работа силы 18 Н при перемещении тела на 9 м.", answer: "162", explanation: "A = 18 * 9 = 162 Дж"},
+      {question: "Количество теплоты для нагревания 6 кг воды на 12 °C.", answer: "302400", explanation: "Q = 6 * 4200 * 12 = 302400 Дж"},
+      {question: "Мощность, если работа 450 Дж за 9 секунд.", answer: "50", explanation: "P = 450 / 9 = 50 Вт"},
+      {question: "Кинетическая энергия тела массой 12 кг со скоростью 1.5 м/с.", answer: "13.5", explanation: "Eк = 0.5 * 12 * 1.5² = 13.5 Дж"},
+      {question: "Потенциальная энергия тела массой 11 кг на высоте 7 м.", answer: "754.6", explanation: "Eп = 11 * 9.8 * 7 = 754.6 Дж"},
+      {question: "Работа силы 22 Н при перемещении тела на 6 м.", answer: "132", explanation: "A = 22 * 6 = 132 Дж"},
+      {question: "Количество теплоты для нагревания 1.5 кг воды на 30 °C.", answer: "189000", explanation: "Q = 1.5 * 4200 * 30 = 189000 Дж"},
+      {question: "Мощность, если работа 1000 Дж за 20 секунд.", answer: "50", explanation: "P = 1000 / 20 = 50 Вт"},
+      {question: "Кинетическая энергия тела массой 15 кг со скоростью 2 м/с.", answer: "30", explanation: "Eк = 0.5 * 15 * 2² = 30 Дж"},
+      {question: "Потенциальная энергия тела массой 13 кг на высоте 14 м.", answer: "1783.6", explanation: "Eп = 13 * 9.8 * 14 = 1783.6 Дж"},
+      {question: "Работа силы 30 Н при перемещении тела на 5 м.", answer: "150", explanation: "A = 30 * 5 = 150 Дж"},
+      {question: "Количество теплоты для нагревания 7 кг воды на 8 °C.", answer: "235200", explanation: "Q = 7 * 4200 * 8 = 235200 Дж"},
+      {question: "Мощность, если работа 750 Дж за 15 секунд.", answer: "50", explanation: "P = 750 / 15 = 50 Вт"},
+      {question: "Кинетическая энергия тела массой 9 кг со скоростью 3.5 м/с.", answer: "55.125", explanation: "Eк = 0.5 * 9 * 3.5² = 55.125 Дж"},
+      {question: "Потенциальная энергия тела массой 14 кг на высоте 10 м.", answer: "1372", explanation: "Eп = 14 * 9.8 * 10 = 1372 Дж"},
+      {question: "Работа силы 16 Н при перемещении тела на 7 м.", answer: "112", explanation: "A = 16 * 7 = 112 Дж"},
+      {question: "Количество теплоты для нагревания 3.5 кг воды на 18 °C.", answer: "264600", explanation: "Q = 3.5 * 4200 * 18 = 264600 Дж"},
+      {question: "Мощность, если работа 900 Дж за 18 секунд.", answer: "50", explanation: "P = 900 / 18 = 50 Вт"},
+    ];
+
+    function displayTasks() {
+      const container = document.getElementById('tasksContainer');
+      container.innerHTML = '';
+      tasks.forEach((task, index) => {
+        const div = document.createElement('div');
+        div.className = 'task';
+        div.innerHTML = `
+          <p><strong>Задача ${index + 1}:</strong> ${task.question}</p>
+          <label for="answer-${index}">Ваш ответ (число):</label>
+          <input type="text" id="answer-${index}" placeholder="Введите ответ" autocomplete="off" />
+          <label for="solution-${index}">Ваше решение (необязательно):</label>
+          <textarea id="solution-${index}" placeholder="Опишите ваше решение"></textarea>
+          <button type="button" id="check-${index}">Проверить ответ</button>
+          <p id="result-${index}" class="result-message"></p>
+          <div id="explanation-${index}" class="explanation">
+            <p><em>Правильный ответ:</em> <span>${task.answer}</span></p>
+            <p><em>Объяснение:</em> ${task.explanation}</p>
+          </div>
+        `;
+        container.appendChild(div);
+
+        const checkBtn = div.querySelector(`#check-${index}`);
+        const answerInput = div.querySelector(`#answer-${index}`);
+        const resultP = div.querySelector(`#result-${index}`);
+        const explanationDiv = div.querySelector(`#explanation-${index}`);
+
+        checkBtn.addEventListener('click', () => {
+          const userAnswer = answerInput.value.trim().replace(',', '.');
+          if (!userAnswer) {
+            resultP.textContent = 'Пожалуйста, введите ответ.';
+            resultP.className = 'result-message incorrect';
+            answerInput.classList.remove('correct');
+            answerInput.classList.add('incorrect');
+            explanationDiv.style.display = 'none';
+            return;
+          }
+          const correctAnswer = parseFloat(task.answer);
+          const userAnswerNum = parseFloat(userAnswer);
+          if (isNaN(userAnswerNum)) {
+            resultP.textContent = 'Ответ должен быть числом.';
+            resultP.className = 'result-message incorrect';
+            answerInput.classList.remove('correct');
+            answerInput.classList.add('incorrect');
+            explanationDiv.style.display = 'none';
+            return;
+          }
+          if (Math.abs(userAnswerNum - correctAnswer) < 0.01) {
+            resultP.textContent = 'Правильно!';
+            resultP.className = 'result-message correct';
+            answerInput.classList.remove('incorrect');
+            answerInput.classList.add('correct');
+          } else {
+            resultP.textContent = 'Неправильно. Попробуйте еще раз.';
+            resultP.className = 'result-message incorrect';
+            answerInput.classList.remove('correct');
+            answerInput.classList.add('incorrect');
+          }
+          // Показываем объяснение и правильный ответ в любом случае
+          explanationDiv.style.display = 'block';
+        });
+      });
+    }
+
+    window.onload = displayTasks;
+  </script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Регистрация - Законы сохранения энергии</title>
+  <style>
+    /* Сброс и базовые стили */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #001a4d; /* темно-синий фон */
+      color: #e0e7ff;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Боковая панель */
+    nav.sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background-color: #003366;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.7);
+      padding: 30px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    nav.sidebar a {
+      color: #cce0ff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 15px;
+      border-radius: 6px;
+      transition: background-color 0.3s, color 0.3s;
+      display: block;
+    }
+
+    nav.sidebar a:hover,
+    nav.sidebar a.active {
+      background-color: #0073e6;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: inset 0 -3px 0 #001f4d;
+    }
+
+    /* Заголовок */
+    header {
+      margin-left: 220px; /* сдвиг справа от панели */
+      background-color: #003366;
+      padding: 20px 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      position: fixed;
+      top: 0;
+      left: 220px;
+      right: 0;
+      z-index: 900;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #aaccff;
+    }
+
+    /* Основной контент */
+    main {
+      margin-left: 220px;
+      padding: 140px 40px 40px 40px; /* сверху отступ для header */
+      max-width: 700px;
+      background-color: #003366;
+      border-radius: 0 6px 6px 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+      color: #d0e4ff;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #cbd5ff;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #cce0ff;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    textarea {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      box-sizing: border-box;
+      background-color: #00264d;
+      color: #d0e4ff;
+      resize: vertical;
+      transition: border-color 0.3s, background-color 0.3s;
+    }
+
+    textarea {
+      height: 80px;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #0059b3;
+      color: #e0e7ff;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0073e6;
+    }
+
+    #userExamples {
+      margin-top: 30px;
+      background-color: #004080;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0, 102, 204, 0.6);
+    }
+
+    #userExamples h3 {
+      margin-top: 0;
+      color: #aaccff;
+    }
+
+    #examplesList {
+      margin-top: 15px;
+      list-style-type: disc;
+      padding-left: 20px;
+      color: #aaddff;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    #examplesList li {
+      margin-bottom: 6px;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+      }
+
+      nav.sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding: 10px 0;
+        box-shadow: none;
+        overflow-x: auto;
+        gap: 10px;
+      }
+
+      nav.sidebar a {
+        flex: 1 0 auto;
+        text-align: center;
+        padding: 10px 5px;
+        font-size: 14px;
+      }
+
+      header {
+        margin-left: 0;
+        position: relative;
+        padding: 20px 15px;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 20px 15px 40px 15px;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar" aria-label="Основная навигация">
+    <a href="index.html">Главная</a>
+    <a href="laws.html">Законы</a>
+    <a href="equations.html">Уравнения</a>
+    <a href="formulas.html">Формулы</a>
+    <a href="tasks.html">Задачи</a>
+    <a href="registration.html" class="active">Регистрация</a>
+  </nav>
+
+  <header>
+    <h1>Основные принципы и законы сохранения энергии в физических системах</h1>
+  </header>
+
+  <main>
+    <h2>Регистрация</h2>
+    <form id="registrationForm">
+      <label for="username">Имя пользователя:</label>
+      <input type="text" id="username" name="username" required autocomplete="off" />
+
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" name="password" required autocomplete="off" />
+
+      <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <div id="userExamples" style="display:none;">
+      <h3>Ваши примеры</h3>
+      <textarea id="exampleInput" placeholder="Введите ваш пример..."></textarea>
+      <button id="addExample">Добавить пример</button>
+      <ul id="examplesList"></ul>
+    </div>
+
+    <script>
+      document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const username = this.username.value.trim();
+        const password = this.password.value.trim();
+        if (username && password) {
+          alert(`Регистрация успешна, ${username}! Теперь вы можете добавить свои примеры.`);
+          this.reset();
+          document.getElementById('userExamples').style.display = 'block';
+        }
+      });
+
+      document.getElementById('addExample').addEventListener('click', function() {
+        const exampleInput = document.getElementById('exampleInput');
+        const exampleText = exampleInput.value.trim();
+        if (exampleText) {
+          const li = document.createElement('li');
+          li.textContent = exampleText;
+          document.getElementById('examplesList').appendChild(li);
+          exampleInput.value = '';
+        } else {
+          alert('Пожалуйста, введите пример.');
+        }
+      });
+    </script>
+  </main>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Формулы - Основные законы сохранения энергии</title>
+  <style>
+    /* Сброс и базовые стили */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #001a4d; /* темно-синий фон */
+      color: #e0e7ff;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Боковая панель */
+    nav.sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background-color: #003366;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.7);
+      padding: 30px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    nav.sidebar a {
+      color: #cce0ff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 15px;
+      border-radius: 6px;
+      transition: background-color 0.3s, color 0.3s;
+      display: block;
+    }
+
+    nav.sidebar a:hover,
+    nav.sidebar a.active {
+      background-color: #0073e6;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: inset 0 -3px 0 #001f4d;
+    }
+
+    /* Заголовок */
+    header {
+      margin-left: 220px; /* сдвиг справа от панели */
+      background-color: #003366;
+      padding: 20px 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      position: fixed;
+      top: 0;
+      left: 220px;
+      right: 0;
+      z-index: 900;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #aaccff;
+    }
+
+    /* Основной контент */
+    main {
+      margin-left: 220px;
+      padding: 140px 40px 40px 40px; /* сверху отступ для header */
+      max-width: 900px;
+      background-color: #003366;
+      border-radius: 0 6px 6px 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+      color: #d0e4ff;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #cbd5ff;
+    }
+
+    h3 {
+      margin-top: 1.5em;
+      color: #cbd5ff;
+    }
+
+    p, ul {
+      line-height: 1.6;
+      font-size: 16px;
+      color: #d0e4ff;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: #aaddff;
+    }
+
+    strong {
+      color: #cce0ff;
+    }
+
+    em {
+      font-style: italic;
+      background-color: rgba(255 255 255 / 0.1);
+      padding: 0 4px;
+      border-radius: 3px;
+    }
+
+    /* Ссылки */
+    a {
+      color: #99ccff;
+    }
+
+    a:hover {
+      color: #cce0ff;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+      }
+
+      nav.sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding: 10px 0;
+        box-shadow: none;
+        overflow-x: auto;
+        gap: 10px;
+      }
+
+      nav.sidebar a {
+        flex: 1 0 auto;
+        text-align: center;
+        padding: 10px 5px;
+        font-size: 14px;
+      }
+
+      header {
+        margin-left: 0;
+        position: relative;
+        padding: 20px 15px;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 20px 15px 40px 15px;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar" aria-label="Основная навигация">
+    <a href="index.html">Главная</a>
+    <a href="laws.html">Законы</a>
+    <a href="equations.html">Уравнения</a>
+    <a href="formulas.html" class="active">Формулы</a>
+    <a href="tasks.html">Задачи</a>
+    <a href="registration.html">Регистрация</a>
+  </nav>
+
+  <header>
+    <h1>Основные формулы и принципы сохранения энергии в физических системах</h1>
+  </header>
+
+  <main>
+    <h2>Основные формулы и их применение</h2>
+    <p>В этом разделе представлены основные формулы, связанные с законами сохранения энергии, которые помогут вам решать практические задачи и понимать физические процессы.</p>
+
+    <section>
+      <h3>1. Кинетическая энергия</h3>
+      <p><em>E<sub>k</sub> = ½ m v²</em></p>
+      <p>Кинетическая энергия - это энергия движущегося тела. Она зависит от массы тела <strong>m</strong> и квадрата его скорости <strong>v</strong>.</p>
+      <p>Пример: тело массой 1000 кг, движущееся со скоростью 20 м/с, обладает кинетической энергией <em>0.5 × 1000 × 20² = 200000 Дж</em>.</p>
+    </section>
+
+    <section>
+      <h3>2. Потенциальная энергия</h3>
+      <p><em>E<sub>p</sub> = m g h</em></p>
+      <p>Потенциальная энергия зависит от положения тела в гравитационном поле. Определяется массой <strong>m</strong>, ускорением свободного падения <strong>g</strong> (≈9.8 м/с²) и высотой <strong>h</strong>.</p>
+      <p>Пример: тело массой 2 кг, поднятое на высоту 5 м, обладает потенциальной энергией <em>2 × 9.8 × 5 = 98 Дж</em>.</p>
+    </section>
+
+    <section>
+      <h3>3. Работа силы</h3>
+      <p><em>A = F s cosθ</em></p>
+      <p>Работа - это энергия, передаваемая телу при действии силы <strong>F</strong> на расстояние <strong>s</strong>. Угол <strong>θ</strong> между направлением силы и перемещением.</p>
+      <p>Пример: сила 10 Н, действующая на 3 м в направлении движения, совершает работу <em>10 × 3 × cos(0°) = 30 Дж</em>.</p>
+    </section>
+
+    <section>
+      <h3>4. Мощность</h3>
+      <p><em>P = A/t</em></p>
+      <p>Мощность показывает, какая работа <strong>A</strong> совершается за единицу времени <strong>t</strong>.</p>
+      <p>Пример: если за 5 секунд совершается работа 100 Дж, мощность равна <em>100 / 5 = 20 Вт</em>.</p>
+    </section>
+
+    <section>
+      <h3>5. Количество теплоты</h3>
+      <p><em>Q = m c ΔT</em></p>
+      <p>Энергия, необходимая для изменения температуры вещества массой <strong>m</strong> на <strong>ΔT</strong>. Удельная теплоемкость <strong>c</strong> - характеристика вещества.</p>
+      <p>Пример: для нагрева 2 кг воды на 10°C требуется <em>2 × 4200 × 10 = 84000 Дж</em> (4200 Дж/(кг·°C) - теплоемкость воды).</p>
+    </section>
+
+    <section>
+      <h3>6. Первый закон термодинамики</h3>
+      <p><em>ΔU = Q - A</em></p>
+      <p>Изменение внутренней энергии системы <strong>ΔU</strong> равно разности полученного тепла <strong>Q</strong> и совершенной работы <strong>A</strong>.</p>
+      <p>Пример: система получает 500 Дж тепла и совершает работу 200 Дж: <em>500 - 200 = 300 Дж</em>.</p>
+    </section>
+
+    <section>
+      <h3>7. Эквивалентность массы и энергии</h3>
+      <p><em>E = m c²</em></p>
+      <p>Знаменитая формула Эйнштейна показывает связь массы <strong>m</strong> и энергии <strong>E</strong>. Скорость света <strong>c</strong> ≈ 3×10⁸ м/с.</p>
+      <p>Пример: 1 г массы эквивалентен ≈9×10¹³ Дж энергии.</p>
+    </section>
+
+    <section>
+      <h3>8. Энергия фотона</h3>
+      <p><em>E = h ν</em></p>
+      <p>Энергия фотона зависит от постоянной Планка <strong>h</strong> и частоты излучения <strong>ν</strong>.</p>
+      <p>Пример: фотон с частотой 6×10¹⁴ Гц имеет энергию ≈4×10⁻¹⁹ Дж.</p>
+    </section>
+
+    <p>Эти формулы являются фундаментальными для понимания законов сохранения энергии в различных физических системах и процессах.</p>
+  </main>
+</body>
+</html>

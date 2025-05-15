@@ -1,0 +1,317 @@
+/* style.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #001a4d;
+  color: #e0e7ff;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+
+  /* Для боковой панели и контента */
+  display: flex;
+  flex-direction: row;
+}
+
+/* Боковая панель */
+nav.sidebar {
+  width: 220px;
+  background-color: #003366; /* темно-синий */
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.7);
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+nav.sidebar a {
+  color: #cce0ff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 15px;
+  border-radius: 6px;
+  transition: background-color 0.3s, color 0.3s;
+  display: block;
+}
+
+nav.sidebar a:hover,
+nav.sidebar a.active {
+  background-color: #0073e6;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 #001f4d;
+}
+
+/* Основной контент */
+main {
+  flex-grow: 1;
+  max-width: 900px;
+  margin: 20px 40px 40px 260px; /* сдвиг справа от панели (220 + 40px отступ) */
+  padding: 20px 25px;
+  background-color: #003366;
+  border-radius: 0 6px 6px 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Заголовок */
+header {
+  background-color: #003366;
+  padding: 20px 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  margin-left: 220px; /* сдвиг, чтобы не перекрываться с боковой панелью */
+  position: fixed;
+  top: 0;
+  left: 220px;
+  right: 0;
+  z-index: 900;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #aaccff;
+}
+
+/* Навигация (если нужна горизонтальная, можно убрать или адаптировать) */
+nav.topnav {
+  background-color: #004080;
+  box-shadow: inset 0 -3px 0 #001f4d;
+}
+
+nav.topnav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+nav.topnav ul li a {
+  display: block;
+  padding: 12px 20px;
+  color: #cce0ff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 6px 6px 0 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav.topnav ul li a:hover,
+nav.topnav ul li a.active {
+  background-color: #0073e6;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 #001f4d;
+}
+
+/* Остальные стили (ваши изначальные) */
+
+h2 {
+  margin-top: 0;
+}
+
+p, ul {
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+ul {
+  padding-left: 20px;
+  color: #aaddff;
+}
+
+a {
+  color: #99ccff;
+}
+
+a:hover {
+  color: #cce0ff;
+}
+
+/* Формы */
+form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+  color: #cce0ff;
+}
+
+form input[type="text"],
+form input[type="password"],
+form textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #00264d;
+  color: #d0e4ff;
+  resize: vertical;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+form textarea {
+  height: 100px;
+}
+
+form button[type="submit"],
+button {
+  margin-top: 15px;
+  background-color: #0059b3;
+  color: #e0e7ff;
+  border: none;
+  padding: 10px 18px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background-color 0.3s;
+}
+
+form button[type="submit"]:hover,
+button:hover {
+  background-color: #0073e6;
+}
+
+/* Задачи */
+.task {
+  background-color: #004080;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 102, 204, 0.5);
+}
+
+.task p {
+  margin: 8px 0;
+}
+
+.task label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+  color: #cce0ff;
+}
+
+.task input[type="text"],
+.task textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #00264d;
+  color: #d0e4ff;
+  resize: vertical;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.task textarea {
+  height: 80px;
+}
+
+.task button {
+  margin-top: 12px;
+  background-color: #0059b3;
+  color: #e0e7ff;
+  border: none;
+  padding: 10px 18px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.task button:hover {
+  background-color: #0073e6;
+}
+
+/* Правильный/неправильный ответ */
+.correct {
+  border: 2px solid #00ff00 !important;
+  background-color: #003300 !important;
+  color: #aaffaa !important;
+}
+
+.incorrect {
+  border: 2px solid #ff4444 !important;
+  background-color: #330000 !important;
+  color: #ffaaaa !important;
+}
+
+/* Сообщение о результате */
+.result-message {
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.result-message.correct {
+  color: #00ff00;
+}
+
+.result-message.incorrect {
+  color: #ff4444;
+}
+
+/* Примеры пользователей */
+#userExamples {
+  margin-top: 25px;
+}
+
+#examplesList {
+  margin-top: 15px;
+  list-style-type: disc;
+  padding-left: 20px;
+  color: #aaddff;
+}
+
+/* Адаптивность */
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+  }
+
+  nav.sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    box-shadow: none;
+    padding: 10px 0;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  nav.sidebar a {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  main {
+    margin: 20px 15px 40px 15px;
+    max-width: 100%;
+  }
+
+  header {
+    margin-left: 0;
+    position: relative;
+    padding: 20px 10px;
+  }
+}
